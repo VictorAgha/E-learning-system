@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->bigInteger('teacher_id');
+            $table->unsignedBigInteger('teacher_id');
             $table->bigInteger('enrollment_limit');
             $table->bigInteger('number_of_assignments');
             $table->bigInteger('number_of_quizzes');
@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('end_at');
             $table->string('meeting_url');
             $table->timestamps();
+            $table->foreign('teacher_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
